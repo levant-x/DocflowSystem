@@ -1,0 +1,21 @@
+﻿
+
+<div class="month-block col-sm-12 col-md-5 p-0">
+    <div class="month-days"></div>
+    <div class="month-names d-flex justify-content-around"></div>
+</div>
+
+<div class="day-block">
+    <div class="day-block" date="{{:Date}}">
+        <p class="docs-number">{{:DocsNum}}</p>
+        {{:Day}}
+    </div>
+</div>
+
+<div class="quick-stats">
+    <div class="quick-stats popover popover-body">
+        {{for Details}}
+        <p class="doc-descr">{{:TotalAndName}}</p>
+        {{/for}}
+    </div>
+</div>

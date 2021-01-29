@@ -1,0 +1,59 @@
+﻿
+.as-count-down{
+                display: inline-block;
+                margin: auto;
+                
+            }
+  
+            .as-count-down span{
+                display: block;
+                background: #696969;
+                color: #fff;
+                height: auto;
+                float: left;
+                margin-right: 5px;
+                padding: 8px;
+                border-radius: 5px;
+                font-size: 100%;
+                line-height:normal;
+                text-align: center;
+                box-shadow: 2px 2px 8px #747474;
+                background-size: contain;                     
+                background-repeat: repeat-x;                  
+            }
+            
+            #days:after,#hours:after,#minutes:after,#seconds:after{
+                
+                /*font-size: 0.625em;*/
+                line-height:normal;
+                display: block;
+                width: inherit;
+                margin-top: 10px;
+                color: #5C5757;
+                text-align: center;
+            }
+            #days:after{
+                content: "Дней";
+            }
+            #minutes:after{
+                content: "Минут";
+            }
+            #hours:after{
+                content: "Часов";
+            }
+            #seconds:after{
+                content: "Секунд";
+            }
+            
+html {
+	font-size: 130% !important;
+}
+.as-count-down span {
+	font-size: 0.9rem;
+}
+@media (max-width: 640px) { .as-count-down span  {font-size:0.6rem;} }
+@media (min-width: 640px) { .as-count-down span  {font-size:0.5rem;} } 
+@media (min-width: 783px) { .as-count-down span  {font-size:0.7rem;} }
+@media (min-width:960px) { .as-count-down span  {font-size:0.7rem;} }
+@media (min-width:1039px) { .as-count-down span  {font-size:1.1rem;} } 
+

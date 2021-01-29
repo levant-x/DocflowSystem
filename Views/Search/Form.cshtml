@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using arkAS.Docflow;
+@model SearchFormModel
+
+
+
+@{ var currentEntity = string.Empty; }
+
+<ul class="nav nav-tabs mt-3" style="border-bottom: none">
+    @foreach (var entityName in Model.NavbarItems.DomainRange)
+    {
+        string active = null;
+        if (entityName.Key.Equals(Model.NavbarItems.SelectedValue))
+        {
+            active = "active";
+            currentEntity = entityName.Key.ToString();
+        }
+        <li class="nav-item @active">
+            @Html.ActionLink(entityName.Value, "Form", new { entityName = entityName.Key },
+           new { @class = "nav-link" })
+        </li>
+    }
+</ul>
+
+<div class="search-panel">
+    <div id="commons-template" class="common-controls hide">
+        @{ Html.RenderPartial("FormControls", new ViewControlModel[] { Model.Pagination }); }
+    </div>
+</div>
+
+<div class="crud-table"></div>
+<div class="entity-form p-4"></div>
+
+@{
+    string shortEntityName = currentEntity.Replace("as_", null);
+}
+
+<div class="globv" locale="@System.Globalization.CultureInfo.CurrentCulture.Name"
+     entity-name="@currentEntity" short-entity-name="@shortEntityName" hidden></div>
+
+
+
+@section js {
+    @Scripts.Render("~/js/others/crud/crud-helpers.js")
+    @Scripts.Render("~/js/others/crud/" + shortEntityName + ".js")
+
+    <script>
+    var currentPageSize;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        $('select[name=page-by]').on('change', resetPagination);
+        initPageSettings();
+    });
+
+    function initPageSettings() {
+        as.crud2.init({
+            isDebug: true,
+            enableFrozenHeader: false,
+        });
+        var CRUDModule = eval(`(${globv.shortEntityName})`);
+        as.crud2.initTable(CRUDModule.initTable());
+        var options = CRUDModule.initForm();
+        options.tableCont = $('.crud-table');
+        as.form.init(options);
+    }
+
+    function afterLoad(data) { // moving 'create' btn down to 'search-clear'
+        var target = $('.commons-predefined');
+        var paginator = $('#commons-template .form-group').clone(true).css('margin', '5px 0')
+            .removeClass('hide');
+        restorePageSize();
+        if (currentPageSize) paginator.find('select').val(currentPageSize);
+        $(target).prepend(paginator);
+        $('a.create-cmd').click({ createNew: true }, editOrCreate);
+        // hooking up details for contract docs
+        if (getTableOpts().operations.details) {
+            $('.ctrDetails').click(getDocDetails);
+        }
+    }
+
+    function getDocDetails(e) {
+        e.preventDefault();
+        var id = $(this).closest('tr').attr('data-itemid');
+        options = getTableOpts();
+        var url = options.ajaxURLFormat.format('get');
+        as.sys.ajaxSend(url, { id: id }, function (item) {
+            if (typeof item !== typeof String) {
+                var details;
+                if (item.as_docType.name === 'Счет') {
+                    details = 'Сумма ' + item.total;
+                }
+                else if (item.as_docType && item.as_docType.name === 'Договор') {
+                    var link = item.as_contractFile.link;
+                    if (!link || link === '') details = 'Файл не указан';
+                    else details = `Ссылка на файл: <a href=${link}>${link}</a>`;
+                }
+                else details = 'Для этого типа документов дополнительных деталей не предусмотрено';
+                showDetails(details);
+            }
+            else {
+                alert(data);
+            }
+        });
+
+        function showDetails(details) {
+            let form = $('.entity-form');
+            form.html(details);
+            $(form).bPopup({
+                onClose: function () { $('.entity-form').html(''); }
+            });
+        }
+    }
+
+    function restorePageSize() {
+        currentPageSize = getTableOpts().pageSize;
+    }
+
+    function resetPagination(e) {
+        // making new 'page-by' to be set to option for further requests
+        currentPageSize = $(e.target).val();
+        getTableOpts().pageSize = currentPageSize;
+    }
+
+    function getTableOpts() {
+        var g = as.crud2.getGuidByElement($('.crud-table'));
+        return as.crud2.options.tables[g];
+    }
+
+    //function Apply() {
+        //let queryObj = globv.query;
+        //queryObj.FilterBy = getFilterValues();
+
+
+        //queryObj.pagination = $('input[name=page-by]').val();
+        //let entityName = globv.entityName;
+        //let query = JSON.stringify(queryObj);
+
+        //as.sys.ajaxSend("/Search/Apply", { entityName, query }, function (data) {
+        //    if (data.result) {
+        //        TEST(data.result);
+        //    }
+        //    else {
+        //        as.sys.bootstrapAlert(data.msg || "Сбой загрузки!", { type: 'danger' });
+        //    }
+        //});
+    //}
+
+    //function TEST(data) {
+    //    //alert('tested');
+    //}
+    </script>
+}

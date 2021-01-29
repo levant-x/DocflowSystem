@@ -1,0 +1,91 @@
+﻿@using Glimpse.Mvc.Html
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous" />
+    <title>@(ViewBag.Title ?? "Ark AS")</title>
+    @Scripts.Render("~/bundles/jquery-core");
+    @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/css-ext")
+    @*@Html.Raw(arkAS.BLL.Core.CoreManager.StyleForDev())*@
+    @RenderSection("css", false)
+    @RenderSection("ogp", false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Система документооборота", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*@if (Roles.IsUserInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Панель управления", "Index", "Admin")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated && !Roles.IsUserInRole("admin") && !Roles.IsUserInRole("guest"))
+                    {
+                        <li>@Html.ActionLink("Кабинет", "Index", "Cabinet")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)*@
+                    @{
+                        <li>@Html.ActionLink("Календарная статистика", "Index", "Stats")</li>
+                        if (!Roles.IsUserInRole("manager"))
+                        {
+                            <li>@Html.ActionLink("Перечни документов", "Form", "Search")</li>
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="body-content2">
+            @RenderBody()
+        </div>
+        <hr />
+    </div>
+    <div class="modal fade" id="asModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary">ОК</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <script src="~/js/AS/as.resources.js" charset="windows-1251"></script>
+    @Scripts.Render("~/bundles/libs")
+    @Scripts.Render("~/bundles/as")
+    @Scripts.Render("~/bundles/highcharts")
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js?modules=core,widget,mouse,sortable"></script>
+    <script src="~/js/AS/controls/as.opinion.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" charset=\"windows-1251\"></script>", "~/js/AS/controls/as.crud2.js")
+    <script src="~/js/others/b-popup.js"></script>
+    <script src="~/js/jsrender.js"></script>
+    @RenderSection("js", false)
+    <script src="~/signalr/hubs"></script>
+</body>
+</html>

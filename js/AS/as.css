@@ -1,0 +1,159 @@
+﻿ .as-progCont { z-index:50000; display: inline-block; position: fixed; left:48% !important; top: 10px; }
+    .as-overlay { background: #f8e89c !important; border: solid 2px #e0cb69;  border-radius: 5px; padding: 3px 10px;  font-weight: bold; color: #000; font-size: 12px; }
+
+.as-text-canEdit { position: relative;}
+.as-text-canEdit:hover { border: solid 2px #ccc;   }
+.as-image-canEdit { position: relative;}
+.as-image-canEdit:hover { border: solid 2px #ccc;   }
+.as-canEdit { position: relative;}
+.as-canEdit:hover { border: solid 2px #ccc;   }
+/*as-crud*/
+.as-hover-toolbar { position: absolute; top: 5px; left: 5px; background: white; padding-left:8px; }
+/*.as-text-edit {  position: absolute; top: 5px; left: 5px; }*/
+.as-edit {  display: inline; margin-right: 10px; }
+  .crdFilter{ margin: 10px 0;}
+    .crdOtherOperation{ display: inline-block; margin-right: 12px;}
+    
+
+    .crdEditItem{ margin: 5px 0;}
+    .crdGroupOperations{ display: inline-block; margin-left: 20px;}
+    .crdSortUp { background: url('images/up.png') no-repeat 0 0; background-position: right center; text-transform: uppercase; }
+    .crdSortDown { background: url('images/down.png') no-repeat 0 0; background-position: right center; text-transform: uppercase; }
+    
+    .crdSortUp2 { background: url('images/up2.png') no-repeat 0 0; background-position: right center; text-transform: uppercase; }
+    .crdSortDown2 { background: url('images/down2.png') no-repeat 0 0; background-position: right center; text-transform: uppercase; }
+    
+    
+    .crdColSettings{ font-size: 10px; list-style-type: none; }
+    .crdColSettings .crdCol{ display: inline-block; width: 160px;}
+    .glyphicon-move{  background: url('images/move.png') no-repeat 0 0; background-position: right center; position: relative; top: 3px; left: -5px; cursor: move;}
+    .hide{ display: none;}
+
+    .crdCommentAdd { float: left; }
+    .crdCommentAddLink{ width: 100px; height: 70px; margin-left: 3px; position: relative; top: -30px; padding-top: 25px;  }
+    .crdAudioCommentInitLink{ height: 70px; margin-left: 6px; position: relative; top: -30px; }
+    .crdAudioRec { margin-left: 15px; vertical-align: top; float:left; }
+
+    .as-user-opinion { display: inline-block; margin-right: 30px; }
+
+    .crdCommentText { width: 500px;  height: 70px;}
+    .hide{ display: none;}
+
+    .crdAudioRecStartStopLink { margin-bottom: 10px; }
+    .crdAudioRecAddLink { margin-bottom: 10px; }
+    .crdAudioRecCancelLink { margin-bottom: 10px; }
+    
+    .crdReplceFrom{ display: inline-block; margin: 0 5px;} 
+
+    .crdFilterItem { display: block; margin: 10px 0; }
+    .crdFilterItem .as-checkboxes label {  display: inline-block;   margin-right: 20px; }
+    .crdPredefinedFilters {  margin: 5px 0; }
+    .crdPredefinedFilters a.crdPredefinedFilterLink { display: inline-block; margin-right: 2px;  }
+/*as-form*/
+.as-form-item{ margin: 5px 0; position: relative; }
+.as-form-item .alert-warning{ font-size: 12px; padding: 6px; position: absolute; top: 0px; left: 420px; }
+
+.as-form-cap{ display: inline-block; width: 200px; margin-right: 20px; position: relative; top: 7px; }
+.as-form-star{ display: inline-block; margin-left: 5px; font-size: 18px; line-height: 1em; color: #f00;}
+
+.as-form-item-el{ display: inline-block; vertical-align: top; }
+
+.as-form-example{ display: inline-block; margin-left: 30px;}
+.as-form-res{ width: 400px;}
+.as-form-error-field{ border: solid 1px red !important; }
+.as-form-btn-cont{ margin: 15px 0; }
+
+.as-metrics-sel { font-weight: bold; background: #ddd;}
+.as-metrics-metric-link {  font-size: 1.3em; line-height: 1.1em; }
+.asBigModal .modal-content { margin-left: -300px; width: 1200px;}
+
+
+.as-export { position: relative;}
+.as-export-toolbar { position: absolute; top: 5px; right: 5px; background: #ccc; border: solid 1px #aaa; padding: 2px; }
+/*.as-count-down*/
+.as-count-down{
+                display: inline-block;
+                margin: auto;                
+            }  
+            .as-count-down span{
+                display: block;
+                background: #696969;
+                color: #fff;
+                height: auto;
+                float: left;
+                margin-right: 5px;
+                padding: 8px;
+                border-radius: 5px;
+                font-size: 100%;
+                line-height:normal;
+                text-align: center;
+                box-shadow: 2px 2px 8px #747474;
+                background-size: contain;                     
+                background-repeat: repeat-x;                  
+            }
+            
+            #days:after,#hours:after,#minutes:after,#seconds:after{
+                
+                line-height:normal;
+                display: block;
+                width: inherit;
+                margin-top: 10px;
+                color: #5C5757;
+                text-align: center;
+            }
+            #days:after{
+                content: "Дней";
+            }
+            #minutes:after{
+                content: "Минут";
+            }
+            #hours:after{
+                content: "Часов";
+            }
+            #seconds:after{
+                content: "Секунд";
+            }
+            
+html {
+	font-size: 130% !important;
+}
+.as-count-down span {
+	font-size: 0.9rem;
+}
+@media (max-width: 640px) { .as-count-down span  {font-size:0.6rem;} }
+@media (min-width: 640px) { .as-count-down span  {font-size:0.5rem;} } 
+@media (min-width: 783px) { .as-count-down span  {font-size:0.7rem;} }
+@media (min-width:960px) { .as-count-down span  {font-size:0.7rem;} }
+@media (min-width:1039px) { .as-count-down span  {font-size:1.1rem;} }
+
+/*.as-jubilee*/
+@media (max-width:400px) { .btn-primary {margin-top:10px;} }
+
+@media (max-width:400px) { .resultText {font-size:10px;} }
+@media (min-width:1039px) { .resultText {font-size:20px;}}
+@media (max-width:1039px) { .resultText {font-size:19px;}}
+@media (max-width:783px) { .resultText {font-size:15px;}}
+@media (max-width:495px) { .resultText {font-size:11px;}}
+@media (max-width:335px) { .resultText {font-size:10px;}}
+
+@media (min-width:450px) { .row {display:flex;}}
+
+@media (max-width:400px) { .daysOfJubilee {font-size:10px;} }
+@media (min-width:1039px) { .daysOfJubilee {font-size:25px;}}
+@media (max-width:1039px) { .daysOfJubilee {font-size:19px;}}
+@media (max-width:783px) { .daysOfJubilee {font-size:15px;}}
+@media (max-width:495px) { .daysOfJubilee {font-size:13px;}}
+@media (max-width:335px) { .daysOfJubilee {font-size:10px;}}
+
+img {
+    margin-top: 6px;
+    /*height:200px;*/
+}
+.feZoom {
+    height:10px;
+}
+
+@media (max-width:1039px) { img {height:170px;}}
+@media (max-width:783px) { img {height:190px;}}
+@media (max-width:495px) { img {height:127px;}}
+@media (max-width:335px) {  img {height:65px;}}

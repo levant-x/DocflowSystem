@@ -1,0 +1,421 @@
+﻿
+
+/*General*/
+
+
+div {
+    text-align: center;
+}
+
+a:hover {
+    color: blue;
+}
+
+.dropdown-menu {
+    text-align: left !important;
+}
+
+.flex-grid {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+i {
+    text-align: left !important;
+    width: 1.7em !important;
+}
+
+input, select {
+    display: inline-block;
+    max-width: 100%;
+    text-align: right;
+}
+
+input, select, label {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    border-width: 1px;
+}
+
+label {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: sub;
+}
+
+input[type=date], input[type=time], input[type=datetime], input[type=datetime-local] {
+    height: 1.7em;
+    font-size: 15px;
+    border-radius: 2px;
+    border: solid 1px #e2e3ea;
+    border-top: solid 1px #ababab;
+}
+
+th {
+    text-align: center;
+}
+
+textarea {
+    text-align: left;
+}
+
+@media(min-width: 770px) {
+    .data-type {
+        width: 49%;
+    }
+
+    .flex-grid {
+        grid-template-columns: 45% 45%;
+        grid-column-gap: 10%;
+    }
+}
+
+@media(min-width: 1000px) {
+    .data-type {
+        width: 24%;
+    }
+
+    .flex-grid {
+        grid-template-columns: 30% 30% 30%;
+        grid-column-gap: 5%;
+    }
+}
+
+
+
+.form-group {
+    display: inline-block;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.row {
+    border: 1px solid #e2e3ea;
+    border-radius: 4px;
+}
+
+
+
+/*Stats*/
+
+.data-types {    
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    margin-top: 60px;
+}
+
+.data-types ul {
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+}
+
+.data-types li {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.data-type {
+    background-color: beige;
+    width: 24%;
+}
+
+.data-type a:hover {
+    background-color: aliceblue;
+    text-decoration: none;
+}
+
+.data-type a {
+    display: block;
+    padding: 10px 0;
+    font: bolder 1.2em Arial !important;
+    color: darkslategrey;
+    width: 100%;
+}
+
+i {
+    font-size: 100%;
+    width: 25px;
+    margin: auto 0;
+}
+
+.period-selector {
+    width: 100%;
+}
+
+/*@Media (max-width: 820px) {
+    .period-selector * {
+        margin: 0 !important;
+    }
+
+    .period-selector, .form-group {
+        display: block !important;
+        margin-right: -7px !important;
+    }
+
+    .row input, .row label, .row select {
+        display: inline-block;
+        width: 67%;
+    }
+
+    .row label {
+        width: 30%;
+        text-align: left;
+    }
+
+    #period-scroller {
+        text-align: right;
+        margin: 10px 0 auto 0 !important;
+    }
+}
+
+@Media (max-width: 500px) {
+    .row input, .row select, .row label {
+        width: 100%;
+    }
+}
+
+
+/*Calendar*/
+
+
+.day-block {
+    background-color: dodgerblue;
+    padding-top: 50%;
+    padding-bottom: 50%;
+    margin: auto 0;
+    line-height: 0 !important;
+    color: white;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    font: bolder 150% sans-serif;
+}
+
+.day-block.odd {
+    background-color: #92b584;
+}
+
+.month-block .weekend {
+    color: orange;
+}
+
+.day-number {
+    font-size: 50%;
+}
+
+.docs-number {
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    font-size: 50%;
+}
+
+.month-days {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.month-names {
+    color: dodgerblue;
+    font-weight: bolder;
+}
+
+p.odd {
+    color: #92b584;
+}
+
+
+
+.quick-stats {
+    border: 1px dotted black;
+    background-color: white;
+    text-align: center;
+    top: 105%;
+    left: auto;
+    line-height: 100%;
+    font-size: 70%;
+}
+
+.popover {
+    display: block;
+}
+
+.popover p {    
+    padding: 2px;
+    margin: 0 10px;
+    white-space: nowrap;
+    color: green;
+}
+
+
+/*Stats-card*/
+
+
+.day-stats-card {
+    padding: 0;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.card-header {
+    background-color: #e2e3ea;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.day-stats-record {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.day-stats-record * {
+    background-color: linen;
+    padding: 5px 0;
+    margin: 0;
+}
+
+
+/*Search-form*/
+
+.search-panel, .search-panel input {
+    font-size: 12px;
+}
+
+.buttons-block input {
+    text-align: center;
+    border-radius: 2px;
+}
+
+#crd2Toolbar {
+    float: right;
+}
+
+.commons-predefined, .commons-predefined * {
+    font-size: 16px;
+    text-align: center !important;
+}
+
+.entity-form {
+    background-color: white;
+    border-radius: 4px;
+}
+
+.filter-control-block, .primaries {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pagination {
+    margin-top: 5px;
+}
+
+.pagination span.current {
+    background-color: aliceblue;
+}
+
+.crd2FilterItem, .crd2FilterItem input, .crd2FilterItem label {
+    font-size: 14px;
+    vertical-align: middle;
+    align-items: baseline;
+}
+
+.pagingcontainer {
+    text-align: left;
+    padding-top: 30px;
+}
+
+.pagination {
+    border-radius: 3px;
+}
+
+.page-link {
+    padding: 10px 15px;
+    margin: 0;
+    border: 1px solid #f5f5f5;
+}
+
+.primaries {
+    flex-wrap: wrap;
+}
+
+.form-group, .filter {
+    width: 100%;
+}
+
+@media(min-width: 570px) {
+    .form-group {
+        width: 45%;
+    }
+
+    .data-types li {
+        width: 45%;
+    }
+
+    .filter {
+        width: 20%;
+    }
+}
+
+@media(min-width: 1100px) {
+    .form-group {
+        width: 24%;
+    }
+    
+    .data-types li {
+        width: 24%;
+    }
+
+    .filter {
+        width: 15%;
+    }
+}
+
+
+/*CRUD-form*/
+
+.as-form-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.as-form-cap {
+    top: 0;
+    text-align: left; 
+    width: auto;
+    white-space: nowrap;
+}
+
+.as-form-item-el {
+    width: 100%;
+}
+
+.as-form-item-el input, .as-form-item-el select, .as-form-item-el textarea {
+    display: block;
+    text-align: right;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/*Login-form*/
+
+
+.form-horizontal {
+    width: 95%;
+}
+
+.form-horizontal .form-group {
+    margin: 0;
+}

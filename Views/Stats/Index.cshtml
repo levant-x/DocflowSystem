@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model arkAS.Docflow.StatsFormModel
+
+
+<div id="templates" hidden>
+    @Html.Raw(File.ReadAllText(Server.MapPath("~/Views/Shared/Templates/Calendar.html")))
+    @Html.Raw(File.ReadAllText(Server.MapPath("~/Views/Shared/Templates/DayStatsCard.html")))
+</div>
+
+<div class="globv" locale="@System.Globalization.CultureInfo.CurrentCulture.Name"
+     period-units="@Html.Raw(Model.PeriodUnits).ToHtmlString().Replace('\n', ' ')"
+     day-to-detalize="@Model.DayToDetail"
+     hidden></div>
+
+<div class="container">
+    <ul class="data-types d-flex flex-wrap" style="list-style: none; padding-left: 0;">
+        @foreach (var asEntityType in Model.NavbarItems.DomainRange)
+        {
+            <li class="nav-item data-type">
+                @Html.ActionLink(asEntityType.Value, "Form",
+                new { controller = "Search", entityName = asEntityType.Key })
+            </li>
+        }
+    </ul>
+
+    <div class="period rounded">
+        <div class="period-selector flex-grid">
+            <style>
+                .form-group {
+                    width: 100%;
+                }
+            </style>
+            @{ Html.RenderPartial("FormControls", Model.FormFilters); }
+            <div id="period-scroller" class="form-group row d-flex align-content-center justify-content-end">
+                <i id="period-scroll-before" class="fas fa-caret-left"></i>
+                <span id="total-docs-per-period">Подождите...</span>
+                <i id="period-scroll-after" class="fas fa-caret-right"
+                   style="text-align: right !important;"></i>
+            </div>
+        </div>
+
+        <div id="period-calendar" class="d-flex justify-content-around flex-wrap mt-3">
+
+        </div>
+        <div id="day-stats" class="d-flex justify-content-between flex-wrap">
+
+        </div>
+    </div>
+</div>
+
+@section js{
+    @Scripts.Render("~/js/others/crud/crud-helpers.js")
+    @Scripts.Render("~/js/others/daily-stats.js")
+    @Scripts.Render("~/js/others/stats-calendar.js")
+}

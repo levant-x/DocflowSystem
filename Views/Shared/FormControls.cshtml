@@ -1,0 +1,26 @@
+﻿@model IEnumerable<arkAS.Docflow.ViewControlModel>
+
+@{
+    string[] rangedTypes = new string[] { "number", "date", "time", "datetime" };
+    string[] buttons = new string[] { "submit", "button" };
+}
+
+
+
+@foreach (var propModel in Model)
+{
+    var name = propModel.Name.Replace('.', '-');
+    <div class="form-group row">
+        <label for="@name" class="col-7">@propModel.Label</label>
+        @if (propModel.IsDiscrete)
+        {
+            var list = new SelectList(propModel.DomainRange, "Key", "Value", propModel.SelectedValue);
+            @Html.DropDownList(name, list, new { @class = "col-5 pull-right" })
+        }
+        else
+        {
+            <input type="@propModel.HtmlInputTypeName" name="@name"
+                   value="@propModel.SelectedValue" class="col-5 pull-right" />
+        }
+    </div>
+}
